@@ -33,4 +33,25 @@ Turnover int not null,
 Primary key(Company_Code), 
 ) ;
 
+CREATE TABLE IF NOT EXISTS stocks (
+    current_stock_price DOUBLE(10, 2) UNSIGNED,
+    stocks_exchange_price DOUBLE(10, 2) UNSIGNED,
+	stocks_price_date DATE,
+	stocks_price_time TIMESTAMP,
+	company_code INT NOT NULL,
+	FOREIGN KEY (company_code)
+        REFERENCES company (company_code)
+        ON DELETE CASCADE
+	
+); 
+
+CREATE TABLE superusers(
+ superuser_roleid int PRIMARY KEY,
+  username varchar(25) NOT NULL,
+  password varchar(30) NOT NULL
+);
+
+
 SHOW DATABASES;
+
+
