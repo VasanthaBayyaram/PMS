@@ -5,6 +5,10 @@ public class Commision {
 	private final Double commisson = 0.02;
 	private Double stockPrice;
 	private Double stockCount;
+	public Commision()
+	{
+		
+	}
 	public Commision(Double stockPrice, Double stockCount) {
 		super();
 		this.stockPrice = stockPrice;

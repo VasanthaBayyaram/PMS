@@ -11,7 +11,10 @@ public class Company {
 	private String currency;
 	private Double turnOver;
 	
-	
+	public Company()
+	{
+		
+	}
 	public Company(Integer companyCode, String companyTitle, String operations, Integer shareCount,
 			Double openSharePrice, String sector, String currency, Double turnOver) {
 		super();

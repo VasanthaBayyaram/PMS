@@ -6,6 +6,11 @@ public class Commodity {
 	private String commodityName;
 	private Double currentPrice;
 	
+	public Commodity()
+	{
+		
+	}
+	
 	public Commodity(Integer commodityCode, String commodityName, Double currentPrice) {
 		super();
 		this.commodityCode = commodityCode;

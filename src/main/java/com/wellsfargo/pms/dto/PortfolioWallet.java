@@ -4,6 +4,11 @@ public class PortfolioWallet {
 	
 	private Integer walletBalance;
 	private Integer userKey;
+	
+	public PortfolioWallet()
+	{
+		
+	}
 
 	public PortfolioWallet(Integer walletBalance,Integer userKey) {
 		super();

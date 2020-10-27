@@ -1,3 +1,7 @@
+create database PMS;
+
+use PMS;
+
 create table ROLE(
 RoleID int Primary Key,
 RoleDesc varchar(20) Not null);
