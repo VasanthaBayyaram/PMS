@@ -6,6 +6,8 @@
 <%@page import="java.sql.Connection"%>
 <%
 String userkey = request.getParameter("investorUserkey"); 
+String fromDate = request.getParameter("fromDate"); 
+String toDate = request.getParameter("toDate"); 
 String database = "PMS";
 String userID = "root";
 String password = "root";
@@ -29,47 +31,37 @@ Class.forName("com.mysql.cj.jdbc.Driver");
 try{
 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+database, userID, password);
 String sqlInvestorDetails =
-"SELECT *FROM INVESTORDETAILS LEFT JOIN INVESTORHISTORY ON INVESTORDETAILS.USERKEY=INVESTORHISTORY.USERKEY LEFT JOIN INVESTORSTOCKSCOMMISSIONINFO ON INVESTORDETAILS.USERKEY=INVESTORSTOCKSCOMMISSIONINFO.USERKEY WHERE INVESTORDETAILS.USERKEY='"+userkey+"';";
+"SELECT *FROM INVESTORSTOCKSCOMMISSIONINFO WHERE (INVESTORSTOCKSCOMMISSIONINFO.USERKEY= '"+userkey+"') AND (INVESTORSTOCKSCOMMISSIONINFO.DATE BETWEEN '"+fromDate+"' AND '"+toDate+"');";
 Statement statement=connection.createStatement();
 ResultSet resultSet = statement.executeQuery(sqlInvestorDetails);
 while(resultSet.next()){
 %>
 <h2>Report for Investor User - <%= userkey %></h2>
 <div align="center">
-<table border="1" cellpadding="5" style="text-align:center"  style="border:1px solid blue">
+<table border="1" cellpadding="5" style="text-align:center">
 <tr>
-<td><strong>USERKEY</strong></td>
-<td><strong>UserName</strong></td>
-<td><strong>Email ID</strong></td>
-<td><strong>Phone Number</strong></td>
-<td><strong>PAN</strong></td>
 <td><strong>Record ID</strong></td>
-<td><strong>Date</strong></td>
-<td><strong>Time ID</strong></td>
-<td><strong>Company Code</strong></td>
+<td><strong>USERKEY</strong></td>
 <td><strong>Stock ID</strong></td>
-<td><strong>Stock Unit</strong></td>
-<td><strong>Commodity Unit</strong></td>
+<td><strong>Company Code</strong></td>
 <td><strong>Commodity Code</strong></td>
 <td><strong>Price paid for Commodity</strong></td>
 <td><strong>Current Price for Commodity</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Stock Unit</strong></td>
+<td><strong>Commodity Unit</strong></td>
 </tr>
 <tr>
-<td><%=resultSet.getString("USERKEY") %></td>
-<td><%=resultSet.getString("username") %></td>
-<td><%=resultSet.getString("EMAIL_ID") %></td>
-<td><%=resultSet.getString("PHONE_NO") %></td>
-<td><%=resultSet.getString("PAN") %></td>
 <td><%=resultSet.getString("RecId") %></td>
-<td><%=resultSet.getString("DATE") %></td>
-<td><%=resultSet.getString("TIME") %></td>
-<td><%=resultSet.getString("COMPANYCODE") %></td>
+<td><%=resultSet.getString("USERKEY") %></td>
 <td><%=resultSet.getString("STOCKID") %></td>
-<td><%=resultSet.getString("STOCKUNIT") %></td>
-<td><%=resultSet.getString("COMMODITYUNIT") %></td>
+<td><%=resultSet.getString("COMPANYCODE") %></td>
 <td><%=resultSet.getString("COMMODITYCODE") %></td>
 <td><%=resultSet.getString("PRICEPAID") %></td>
 <td><%=resultSet.getString("CURRENTPRICE") %></td>
+<td><%=resultSet.getString("DATE") %></td>
+<td><%=resultSet.getString("STOCKUNIT") %></td>
+<td><%=resultSet.getString("COMMODITYUNIT") %></td>
 </tr>
 <%
 }

@@ -65,8 +65,12 @@ border: 1px solid black;
 <input type="radio" name="annual" id="annual" ><label for="annual">Annual</label>
 <input type="radio" name="dateRange" id="dateRange"><label for="dateRange">Date Range</label>
 <br><br>
-<label for="dateRange">From: </label><input type="date" name="report" id="from">
-<label for="dateRange">To: </label><input type="date" name="report" id="to">
+					<label for="ukey" >Investor User key</label>
+					<input type = "text" id = "ukey" name = "investorUserkey" autocomplete="off" required/>
+					<br>
+					<label for="dateRange">From Date</label><input type="date" id="fDate" name="fromDate">
+					<br>
+					<label for="dateRange">To Date</label><input type="date" id="tDate" name="toDate">
 <br><br>
 <button>Generate Report</button>
 </form>
